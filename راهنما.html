@@ -1,0 +1,214 @@
+<!doctype html>
+<html dir="rtl" lang="fa"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>راهنمای راه‌اندازی مهسا هوم</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: one narrow reading column, numbered steps as a vertical checklist. Terracotta accent taken from the site itself. */
+:root{
+  --bg:#f6efe5;--panel:#fffaf3;--ink:#3b3128;--muted:#7b6f63;--line:#e6d8c7;--accent:#b65c3e;--accent-ink:#fff;
+  --code-bg:#efe4d4;--warn-bg:#fbefd9;--warn-line:#e2c48d;--ok:#4a7a43;
+  --font:Vazirmatn,Tahoma,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#1d1814;--panel:#272019;--ink:#f1e6d8;--muted:#b3a492;--line:#43372b;--accent:#d9835f;--accent-ink:#1d1814;
+  --code-bg:#352a20;--warn-bg:#3a2e1c;--warn-line:#7a6030;--ok:#a9d39f;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1d1814;--panel:#272019;--ink:#f1e6d8;--muted:#b3a492;--line:#43372b;--accent:#d9835f;--accent-ink:#1d1814;
+  --code-bg:#352a20;--warn-bg:#3a2e1c;--warn-line:#7a6030;--ok:#a9d39f;color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:2;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.page{max-width:760px;margin:0 auto;padding-block:28px 60px}
+/* اصطلاحات انگلیسی: هر کدام جدا و چپ‌به‌راست تا ترتیب کلمات به‌هم نریزد */
+.en{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:system-ui,Segoe UI,Arial,sans-serif;font-size:.92em;font-weight:600;padding:0 6px;border-radius:6px;background:var(--code-bg);line-height:1.7}
+.path{display:flex;flex-wrap:wrap;gap:6px 4px;align-items:center;margin:10px 0}
+.path .en{background:var(--panel);border:1px solid var(--line);padding:1px 10px}
+.path .en+.en::before{content:"‹";margin-inline-end:8px;color:var(--muted)}
+.path .en:not(:first-child){position:relative}
+h1{font-size:28px;font-weight:900;line-height:1.5;margin:0 0 6px;text-wrap:balance}
+.lead{color:var(--muted);margin:0 0 24px}
+h2{font-size:19px;font-weight:700;margin:0;line-height:1.6}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px 20px;margin-bottom:14px}
+.step>header{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.n{flex:0 0 34px;height:34px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-weight:900;font-family:system-ui,sans-serif}
+.step.done .n{background:var(--ok);color:var(--bg)}
+.step.done h2{text-decoration:line-through;text-decoration-color:var(--muted);color:var(--muted)}
+.step label.chk{margin-inline-start:auto;font-size:13px;color:var(--muted);display:flex;gap:6px;align-items:center;cursor:pointer}
+.step label.chk input{width:18px;height:18px;accent-color:var(--accent)}
+.step ol,.step ul{margin:8px 0;padding-inline-start:22px}
+.step li{margin-bottom:6px}
+p{margin:8px 0}
+.note{background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:12px;padding:10px 14px;margin:12px 0;font-size:15px}
+.tbl{overflow-x:auto;margin:10px 0;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:480px;font-size:15px}
+th,td{padding:8px 12px;border-bottom:1px solid var(--line);text-align:right;vertical-align:top}
+th{background:var(--code-bg);font-weight:700}
+tr:last-child td{border-bottom:0}
+.k{white-space:nowrap}
+.faq dt{font-weight:700;margin-top:12px}
+.faq dd{margin:2px 0 0;color:var(--muted)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+</style>
+</head><body>
+
+<main class="page" dir="rtl" lang="fa">
+<h1>راه‌اندازی سایت «از ویترین تا خانه»</h1>
+<p class="lead">این مراحل را به ترتیب انجام دهید. بعد از هر مرحله، تیک «انجام شد» را بزنید تا جایتان گم نشود. اگر اسم یک دکمه در Cloudflare کمی فرق داشت، نزدیک‌ترین گزینه را انتخاب کنید، چون این پنل گاهی ظاهرش را عوض می‌کند.</p>
+
+<section class="step" id="s1">
+<header><span class="n">۱</span><h2>بارگذاری پروژه روی <span class="en">GitHub</span></h2><label class="chk"><input type="checkbox"> انجام شد</label></header>
+<ol>
+<li>فایل zip پروژه را از حالت فشرده خارج کنید.</li>
+<li>در <span class="en">github.com</span> یک مخزن جدید بسازید و آن را خصوصی (<span class="en">Private</span>) بگذارید.</li>
+<li>محتوای داخل پوشه‌ی پروژه را روی صفحه‌ی مخزن بکشید و رها کنید. باید پوشه‌های <span class="en">public</span> و <span class="en">functions</span> و فایل‌های <span class="en">schema.sql</span> و <span class="en">migration-1.sql</span> آپلود شوند، نه خودِ zip.</li>
+<li>دکمه‌ی <span class="en">Commit changes</span> را بزنید.</li>
+</ol>
+<div class="note">اگر پروژه‌ی نسخه‌ی قبلی را قبلاً آپلود کرده‌اید، فایل‌های جدید را روی همان‌ها بریزید تا جایگزین شوند.</div>
+</section>
+
+<section class="step" id="s2">
+<header><span class="n">۲</span><h2>ساخت دیتابیس <span class="en">D1</span></h2><label class="chk"><input type="checkbox"> انجام شد</label></header>
+<p>مسیر را در داشبورد Cloudflare به این ترتیب بروید:</p>
+<div class="path"><span class="en">Storage &amp; Databases</span><span class="en">D1 SQL Database</span><span class="en">Create Database</span></div>
+<ol>
+<li>نام دیتابیس را <span class="en">mahsa-home-db</span> بگذارید و بسازید.</li>
+<li>وارد دیتابیس شوید و تب <span class="en">Console</span> را باز کنید.</li>
+<li>کل محتوای فایل <span class="en">schema.sql</span> را کپی و در کادر Paste کنید و <span class="en">Execute</span> را بزنید.</li>
+<li>در تب <span class="en">Tables</span> باید جدول <span class="en">registrations</span> را ببینید.</li>
+</ol>
+<div class="note">اگر جدول را با نسخه‌ی قبلی فایل ساخته بودید، فقط یک بار محتوای <span class="en">migration-1.sql</span> را هم در همان <span class="en">Console</span> اجرا کنید. این کار یک ستون برای یادداشت‌های پیشخوان اضافه می‌کند.</div>
+</section>
+
+<section class="step" id="s3">
+<header><span class="n">۳</span><h2>ساخت پروژه <span class="en">Pages</span></h2><label class="chk"><input type="checkbox"> انجام شد</label></header>
+<div class="path"><span class="en">Workers &amp; Pages</span><span class="en">Create</span><span class="en">Pages</span><span class="en">Connect to Git</span></div>
+<ol>
+<li>حساب GitHub را وصل کنید و مخزن پروژه را انتخاب کنید.</li>
+<li>این تنظیمات را وارد کنید:</li>
+</ol>
+<div class="tbl"><table>
+<tr><th>فیلد</th><th>مقدار</th></tr>
+<tr><td><span class="en">Framework preset</span></td><td><span class="en">None</span></td></tr>
+<tr><td><span class="en">Build command</span></td><td>خالی بگذارید</td></tr>
+<tr><td><span class="en">Build output directory</span></td><td><span class="en">public</span></td></tr>
+</table></div>
+<ol start="3"><li>دکمه‌ی <span class="en">Save and Deploy</span> را بزنید.</li></ol>
+</section>
+
+<section class="step" id="s4">
+<header><span class="n">۴</span><h2>وصل کردن دیتابیس به پروژه</h2><label class="chk"><input type="checkbox"> انجام شد</label></header>
+<div class="path"><span class="en">Settings</span><span class="en">Bindings</span><span class="en">Add</span><span class="en">D1 database</span></div>
+<ul>
+<li>نام متغیر را دقیقاً <span class="en">DB</span> بنویسید، با حروف بزرگ.</li>
+<li>دیتابیس <span class="en">mahsa-home-db</span> را انتخاب کنید.</li>
+<li>این کار را یک بار برای محیط <span class="en">Production</span> و یک بار برای <span class="en">Preview</span> انجام دهید.</li>
+</ul>
+</section>
+
+<section class="step" id="s5">
+<header><span class="n">۵</span><h2>رمز ورود به پیشخوان</h2><label class="chk"><input type="checkbox"> انجام شد</label></header>
+<div class="path"><span class="en">Settings</span><span class="en">Variables and Secrets</span><span class="en">Add</span></div>
+<ul>
+<li>نام: <span class="en">ADMIN_PASSWORD</span></li>
+<li>نوع: <span class="en">Secret</span></li>
+<li>مقدار: یک رمز قوی و طولانی که فقط خودتان بدانید.</li>
+</ul>
+<p>نام کاربری پیشخوان همیشه <span class="en">admin</span> است.</p>
+</section>
+
+<section class="step" id="s6">
+<header><span class="n">۶</span><h2>ایمیل اطلاع‌رسانی با <span class="en">Resend</span></h2><label class="chk"><input type="checkbox"> انجام شد</label></header>
+<p>با هر ثبت‌نام جدید، یک ایمیل به <span class="en">mahmood.saeedipm@gmail.com</span> می‌رود. Cloudflare خودش ایمیل نمی‌فرستد و برای همین از سرویس رایگان <span class="en">Resend</span> استفاده می‌شود (حدود ۱۰۰ ایمیل در روز رایگان است).</p>
+<p><b>روش سریع (بدون تنظیم دامنه):</b></p>
+<ol>
+<li>در <span class="en">resend.com</span> با همان ایمیل <span class="en">mahmood.saeedipm@gmail.com</span> ثبت‌نام کنید.</li>
+<li>از بخش <span class="en">API Keys</span> یک کلید بسازید و کپی کنید.</li>
+<li>در پروژه‌ی Pages، یک <span class="en">Secret</span> با نام <span class="en">RESEND_API_KEY</span> بسازید و کلید را در آن بگذارید.</li>
+</ol>
+<div class="note">در این روش فرستنده‌ی ایمیل، آدرس آزمایشی خود Resend است و طبق قواعد آن سرویس فقط به ایمیلی می‌رسد که حساب Resend با آن ساخته شده. ممکن است ایمیل‌ها گاهی به پوشه‌ی هرزنامه (<span class="en">Spam</span>) بروند.</div>
+<p><b>روش حرفه‌ای (فرستنده با دامنه‌ی خودتان):</b></p>
+<ol>
+<li>در Resend از بخش <span class="en">Domains</span> دامنه‌ی خودتان را اضافه کنید.</li>
+<li>رکوردهای <span class="en">DNS</span> را که Resend نشان می‌دهد، در Cloudflare و در بخش <span class="en">Records</span> از منوی <span class="en">DNS</span> اضافه کنید و صبر کنید تا <span class="en">Verified</span> شود.</li>
+<li>در پروژه، متغیر <span class="en">FROM_EMAIL</span> را با مقدار <span class="en">Mahsa Home &lt;noreply@your-domain.com&gt;</span> بسازید و به‌جای <span class="en">your-domain.com</span> دامنه‌ی خودتان را بنویسید.</li>
+<li>اگر ایمیل‌ها باید به آدرس دیگری بروند، متغیر <span class="en">NOTIFY_EMAIL</span> را با آدرس جدید بسازید.</li>
+</ol>
+<p>اگر ایمیل ارسال نشود، ثبت در دیتابیس بی‌اشکال انجام می‌شود و اطلاعات را در پیشخوان می‌بینید.</p>
+</section>
+
+<section class="step" id="s7">
+<header><span class="n">۷</span><h2>انتشار دوباره</h2><label class="chk"><input type="checkbox"> انجام شد</label></header>
+<p>تنظیمات مراحل ۴ تا ۶ فقط بعد از یک انتشار تازه اعمال می‌شوند:</p>
+<div class="path"><span class="en">Deployments</span><span class="en">⋯</span><span class="en">Retry deployment</span></div>
+</section>
+
+<section class="step" id="s8">
+<header><span class="n">۸</span><h2>وصل کردن دامنه</h2><label class="chk"><input type="checkbox"> انجام شد</label></header>
+<div class="path"><span class="en">Custom domains</span><span class="en">Set up a custom domain</span></div>
+<ol>
+<li>دامنه‌ای را که خریده‌اید وارد کنید و ادامه دهید.</li>
+<li>اگر دامنه از قبل در Cloudflare ثبت شده، رکوردها خودکار ساخته می‌شوند.</li>
+<li>اگر دامنه را از جای دیگری خریده‌اید، اول از <span class="en">Add a domain</span> آن را به Cloudflare اضافه کنید. سپس در پنل فروشنده‌ی دامنه، <span class="en">Nameserver</span>ها را به دو آدرسی که Cloudflare می‌دهد تغییر دهید.</li>
+<li>فعال شدن گواهی امنیتی از چند دقیقه تا چند ساعت طول می‌کشد.</li>
+</ol>
+</section>
+
+<section class="step" id="s9">
+<header><span class="n">۹</span><h2>آزمایش نهایی</h2><label class="chk"><input type="checkbox"> انجام شد</label></header>
+<ol>
+<li>سایت را روی دامنه باز کنید و فرم را با یک اطلاعات آزمایشی پر کنید.</li>
+<li>آدرس پیشخوان را باز کنید:
+<div class="path"><span class="en">https://your-domain.com/admin</span></div>
+به‌جای <span class="en">your-domain.com</span> دامنه‌ی خودتان را بنویسید. نام کاربری <span class="en">admin</span> است و رمز، همان است که در مرحله‌ی ۵ ساختید.</li>
+<li>ثبت آزمایشی را در پیشخوان ببینید و وضعیتش را تغییر دهید. بعد آن را با دکمه‌ی «حذف» پاک کنید.</li>
+<li>ایمیل اطلاع‌رسانی را در صندوق ورودی یا هرزنامه‌ی Gmail بررسی کنید.</li>
+</ol>
+<p>برای فایل Excel، دکمه‌ی «دانلود فایل Excel» بالای پیشخوان را بزنید.</p>
+</section>
+
+<section class="step" id="vars">
+<header><h2>خلاصه‌ی متغیرهای پروژه</h2></header>
+<div class="tbl"><table>
+<tr><th>نام</th><th>کجا</th><th>لازم است؟</th></tr>
+<tr><td class="k"><span class="en">DB</span></td><td><span class="en">Bindings</span> (از نوع <span class="en">D1</span>)</td><td>بله</td></tr>
+<tr><td class="k"><span class="en">ADMIN_PASSWORD</span></td><td><span class="en">Secret</span></td><td>بله</td></tr>
+<tr><td class="k"><span class="en">RESEND_API_KEY</span></td><td><span class="en">Secret</span></td><td>برای ایمیل</td></tr>
+<tr><td class="k"><span class="en">FROM_EMAIL</span></td><td><span class="en">Variable</span></td><td>فقط در روش حرفه‌ای</td></tr>
+<tr><td class="k"><span class="en">NOTIFY_EMAIL</span></td><td><span class="en">Variable</span></td><td>فقط برای تغییر گیرنده</td></tr>
+</table></div>
+</section>
+
+<section class="step">
+<header><h2>اگر مشکلی پیش آمد</h2></header>
+<dl class="faq">
+<dt>فرم می‌گوید «ثبت آنلاین انجام نشد»</dt>
+<dd>معمولاً یعنی متغیر <span class="en">DB</span> وصل نیست یا بعد از اتصال، مرحله‌ی ۷ را انجام نداده‌اید.</dd>
+<dt>پیشخوان خطای ۵۰۰ می‌دهد</dt>
+<dd>متغیر <span class="en">ADMIN_PASSWORD</span> ساخته نشده یا بعد از ساختنش انتشار دوباره انجام نشده است.</dd>
+<dt>پیشخوان بدون اطلاعات است ولی فرم ثبت می‌شود</dt>
+<dd>ستون <span class="en">admin_note</span> وجود ندارد. فایل <span class="en">migration-1.sql</span> را در <span class="en">Console</span> اجرا کنید.</dd>
+<dt>ایمیل نمی‌رسد</dt>
+<dd>پوشه‌ی هرزنامه را ببینید. بعد در Pages، بخش <span class="en">Functions</span> و <span class="en">Real-time Logs</span> را باز کنید و ببینید خطای <span class="en">email_failed</span> چه می‌گوید.</dd>
+<dt>رمز پیشخوان را فراموش کردم</dt>
+<dd>مقدار <span class="en">ADMIN_PASSWORD</span> را در تنظیمات عوض کنید و انتشار دوباره بدهید.</dd>
+</dl>
+</section>
+</main>
+
+<script>
+(()=>{
+  const key='mahsa-home-guide-v1';
+  let saved={};
+  try{saved=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}
+  document.querySelectorAll('.step[id^="s"] input[type=checkbox]').forEach(cb=>{
+    const step=cb.closest('.step');
+    if(saved[step.id]){cb.checked=true;step.classList.add('done')}
+    cb.addEventListener('change',()=>{
+      step.classList.toggle('done',cb.checked);
+      saved[step.id]=cb.checked;
+      try{localStorage.setItem(key,JSON.stringify(saved))}catch(e){}
+    });
+  });
+})();
+</script>
+</body></html>

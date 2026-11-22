@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>پیشخوان مهسا هوم</title>
+<style>
+@font-face{font-family:Lahzeh;src:url('/assets/fonts/Lahzeh-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:Lahzeh;src:url('/assets/fonts/Lahzeh-Medium.ttf') format('truetype');font-weight:500;font-display:swap}
+@font-face{font-family:Lahzeh;src:url('/assets/fonts/Lahzeh-Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+@font-face{font-family:Lahzeh;src:url('/assets/fonts/Lahzeh-Black.ttf') format('truetype');font-weight:900;font-display:swap}
+:root{
+  --bg:#f6efe5;--panel:#fffaf3;--panel-2:#faf1e5;--ink:#3b3128;--muted:#7b6f63;--line:#e6d8c7;
+  --brand:#b65c3e;--brand-ink:#fff;--focus:#d6a96d;
+  --s-new:#a8561f;--s-new-bg:#fbe9d6;
+  --s-contacted:#2f5f8a;--s-contacted-bg:#e1edf7;
+  --s-confirmed:#3f6b3a;--s-confirmed-bg:#e2eedb;
+  --s-rejected:#7a4a4a;--s-rejected-bg:#efdfdf;
+  --shadow:0 10px 30px rgba(80,55,30,.08);
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#1d1814;--panel:#272019;--panel-2:#2f261d;--ink:#f1e6d8;--muted:#b3a492;--line:#43372b;
+  --brand:#d9835f;--brand-ink:#1d1814;--focus:#d6a96d;
+  --s-new:#f0b27a;--s-new-bg:#4a3220;
+  --s-contacted:#9cc4ea;--s-contacted-bg:#243445;
+  --s-confirmed:#a9d39f;--s-confirmed-bg:#283a24;
+  --s-rejected:#e1b0b0;--s-rejected-bg:#432b2b;
+  --shadow:0 10px 30px rgba(0,0,0,.35);
+}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Lahzeh,Tahoma,Arial,sans-serif;font-size:15px;line-height:1.8}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.wrap{max-width:1240px;margin:0 auto;padding:20px max(16px,env(safe-area-inset-left,0px)) 60px}
+header{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:20px}
+h1{margin:0;font-size:24px;font-weight:900}
+header p{margin:0;color:var(--muted);font-size:13px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:6px 16px;border:1px solid var(--line);border-radius:12px;background:var(--panel);cursor:pointer;text-decoration:none;color:var(--ink);font-weight:500}
+.btn:hover{background:var(--panel-2)}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:var(--brand-ink);font-weight:700}
+.btn.danger{color:#b3382b}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:18px}
+.stat{padding:16px 18px;border:1px solid var(--line);border-radius:16px;background:var(--panel);cursor:pointer;text-align:right}
+.stat[aria-pressed="true"]{border-color:var(--brand);box-shadow:0 0 0 2px var(--brand) inset}
+.stat b{display:block;font-size:30px;font-weight:900;line-height:1.3;font-variant-numeric:tabular-nums}
+.stat span{color:var(--muted);font-size:13px}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;margin-bottom:18px}
+.mix{padding:16px 18px;border:1px solid var(--line);border-radius:16px;background:var(--panel);min-width:0}
+.mix h2{margin:0 0 10px;font-size:14px;font-weight:700;color:var(--muted)}
+.bar{display:grid;grid-template-columns:minmax(0,1fr) 42px;gap:4px 10px;align-items:center;margin-bottom:8px;font-size:13px}
+.bar i{grid-column:1/-1;display:block;height:7px;border-radius:5px;background:var(--panel-2);overflow:hidden}
+.bar i u{display:block;height:100%;background:var(--brand);border-radius:5px}
+.bar em{font-style:normal;text-align:left;font-variant-numeric:tabular-nums;color:var(--muted)}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.tools input,.tools select{min-height:42px;border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:6px 14px}
+.tools input{flex:1 1 240px;min-width:0}.tools select{flex:1 1 150px;min-width:0}
+.tablebox{border:1px solid var(--line);border-radius:18px;background:var(--panel);box-shadow:var(--shadow);overflow:hidden}
+table{width:100%;border-collapse:collapse}
+th{padding:12px 14px;text-align:right;font-size:12.5px;font-weight:700;color:var(--muted);background:var(--panel-2);border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
+tbody tr{cursor:pointer}
+tbody tr:hover td{background:var(--panel-2)}
+tbody tr:last-child td{border-bottom:0}
+.num{color:var(--muted);font-size:13px}
+.ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+.pill{display:inline-block;padding:2px 12px;border-radius:99px;font-size:12.5px;font-weight:700;white-space:nowrap}
+.pill.new{background:var(--s-new-bg);color:var(--s-new)}
+.pill.contacted{background:var(--s-contacted-bg);color:var(--s-contacted)}
+.pill.confirmed{background:var(--s-confirmed-bg);color:var(--s-confirmed)}
+.pill.rejected{background:var(--s-rejected-bg);color:var(--s-rejected)}
+.empty{padding:50px 20px;text-align:center;color:var(--muted)}
+dialog{width:min(560px,calc(100vw - 24px));max-height:calc(100dvh - 24px);padding:0;border:1px solid var(--line);border-radius:20px;background:var(--panel);color:var(--ink);box-shadow:0 24px 60px rgba(0,0,0,.3);overflow:auto}
+dialog::backdrop{background:rgba(30,20,10,.5)}
+.dhead{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;padding:18px 22px;border-bottom:1px solid var(--line)}
+.dhead h2{margin:0;font-size:20px;font-weight:900}
+.dhead small{color:var(--muted)}
+.dbody{padding:16px 22px 22px;display:grid;gap:14px}
+dl{margin:0;display:grid;grid-template-columns:130px minmax(0,1fr);gap:8px 14px}
+dt{color:var(--muted);font-size:13px}
+dd{margin:0;overflow-wrap:anywhere}
+.field{display:grid;gap:6px}
+.field label{font-size:13px;color:var(--muted)}
+.field select,.field textarea{border:1px solid var(--line);border-radius:12px;background:var(--bg);padding:8px 12px;width:100%}
+.field textarea{min-height:90px;resize:vertical}
+.drow{display:flex;gap:8px;flex-wrap:wrap}
+.msg{font-size:13px;color:var(--muted);min-height:1.5em}
+.toast{position:fixed;inset-inline:0;bottom:max(16px,env(safe-area-inset-bottom,0px));margin:auto;width:max-content;max-width:calc(100vw - 32px);padding:10px 20px;border-radius:12px;background:var(--ink);color:var(--bg);font-weight:500;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.on{opacity:1}
+@media (max-width:820px){
+  .split{grid-template-columns:1fr}
+  thead{display:none}
+  table,tbody,tr,td{display:block;width:100%}
+  tr{padding:12px 16px;border-bottom:1px solid var(--line)}
+  tr:last-child{border-bottom:0}
+  td{padding:2px 0;border:0}
+  td.hide-m{display:none}
+  td[data-l]::before{content:attr(data-l) ": ";color:var(--muted);font-size:12.5px}
+  tbody tr:hover td{background:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>پیشخوان ثبت‌نام‌ها</h1>
+      <p>طرح «از ویترین تا خانه» · مهسا هوم</p>
+    </div>
+    <div class="actions">
+      <button class="btn" id="refresh" type="button">بروزرسانی</button>
+      <a class="btn primary" href="/api/export">دانلود فایل Excel</a>
+    </div>
+  </header>
+
+  <section class="stats" id="stats" aria-label="خلاصه وضعیت"></section>
+
+  <section class="split" aria-label="ترکیب درخواست‌ها">
+    <div class="mix"><h2>به تفکیک پکیج</h2><div id="mix-pkg"></div></div>
+    <div class="mix"><h2>به تفکیک گروه محصول</h2><div id="mix-grp"></div></div>
+  </section>
+
+  <div class="tools">
+    <input id="q" type="search" placeholder="جستجو در نام برند، مسئول، شماره…" aria-label="جستجو">
+    <select id="f-pkg" aria-label="فیلتر پکیج"><option value="">همه پکیج‌ها</option></select>
+    <select id="f-grp" aria-label="فیلتر گروه محصول"><option value="">همه گروه‌ها</option></select>
+  </div>
+
+  <div class="tablebox">
+    <table>
+      <thead><tr>
+        <th>#</th><th>زمان ثبت</th><th>نام برند</th><th>مسئول</th><th>شماره تماس</th><th>گروه محصول</th><th>پکیج</th><th>وضعیت</th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <div class="empty" id="empty" hidden></div>
+  </div>
+</div>
+
+<dialog id="dlg" aria-labelledby="d-title">
+  <div class="dhead">
+    <div><h2 id="d-title"></h2><small id="d-time"></small></div>
+    <button class="btn" id="d-close" type="button" aria-label="بستن">✕</button>
+  </div>
+  <div class="dbody">
+    <dl id="d-fields"></dl>
+    <div class="field"><label for="d-status">وضعیت پیگیری</label>
+      <select id="d-status">
+        <option value="new">جدید</option><option value="contacted">تماس گرفته شد</option>
+        <option value="confirmed">تأیید شد</option><option value="rejected">ردشده</option>
+      </select></div>
+    <div class="field"><label for="d-note">یادداشت داخلی</label><textarea id="d-note" maxlength="2000" placeholder="مثلاً: قرار تماس فردا ساعت ۱۰"></textarea></div>
+    <div class="msg" id="d-msg" role="status"></div>
+    <div class="drow">
+      <button class="btn primary" id="d-save" type="button">ذخیره</button>
+      <a class="btn" id="d-wa" target="_blank" rel="noopener">واتساپ</a>
+      <a class="btn" id="d-tel">تماس</a>
+      <button class="btn danger" id="d-del" type="button">حذف</button>
+    </div>
+  </div>
+</dialog>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(()=>{
+ 'use strict';
+ const ST={new:'جدید',contacted:'تماس گرفته شد',confirmed:'تأیید شد',rejected:'ردشده'};
+ const $=id=>document.getElementById(id);
+ let all=[],cur=null,statusFilter='',delArmed=false;
+ const nf=new Intl.NumberFormat('fa-IR');
+ const fmt=s=>{try{return new Date(s.replace(' ','T')+'Z').toLocaleString('fa-IR',{timeZone:'Asia/Tehran',dateStyle:'medium',timeStyle:'short'})}catch{return s}};
+ const pkgShort=s=>String(s||'').split('—')[0].trim();
+ const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+ const toast=m=>{const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('on'),2200)};
+
+ async function load(){
+  $('empty').hidden=true;
+  try{
+   const r=await fetch('/api/admin/registrations',{cache:'no-store'});
+   if(!r.ok)throw new Error(r.status);
+   all=(await r.json()).rows||[];
+  }catch(e){
+   all=[];$('empty').hidden=false;$('empty').textContent='دریافت اطلاعات انجام نشد. صفحه را دوباره باز کنید و مطمئن شوید دیتابیس به پروژه وصل است.';
+  }
+  buildFilters();render();
+ }
+
+ function buildFilters(){
+  const fill=(sel,vals,label)=>{const v=sel.value;sel.replaceChildren(new Option(label,''));[...new Set(vals.filter(Boolean))].forEach(x=>sel.add(new Option(x,x)));sel.value=v};
+  fill($('f-pkg'),all.map(r=>pkgShort(r.package_choice)),'همه پکیج‌ها');
+  fill($('f-grp'),all.map(r=>r.product_group),'همه گروه‌ها');
+ }
+
+ function filtered(){
+  const q=$('q').value.trim().toLowerCase(),p=$('f-pkg').value,g=$('f-grp').value;
+  return all.filter(r=>(!statusFilter||r.status===statusFilter)&&(!p||pkgShort(r.package_choice)===p)&&(!g||r.product_group===g)&&
+   (!q||[r.brand,r.contact_name,r.phone,r.brand_url,r.message].join(' ').toLowerCase().includes(q)));
+ }
+
+ function renderStats(){
+  const c={new:0,contacted:0,confirmed:0,rejected:0};all.forEach(r=>c[r.status]!=null&&c[r.status]++);
+  const box=$('stats');box.replaceChildren();
+  [['',all.length,'همه ثبت‌نام‌ها'],['new',c.new,'جدید'],['contacted',c.contacted,'تماس گرفته شد'],['confirmed',c.confirmed,'تأیید شد']].forEach(([k,n,l])=>{
+   const b=el('button','stat');b.type='button';b.setAttribute('aria-pressed',String(statusFilter===k));
+   b.append(el('b',null,nf.format(n)),el('span',null,l));
+   b.onclick=()=>{statusFilter=statusFilter===k?'':k;render()};box.append(b);
+  });
+ }
+
+ function renderMix(id,key,fn){
+  const box=$(id);box.replaceChildren();const m={};
+  all.forEach(r=>{const k=fn?fn(r[key]):r[key];if(k)m[k]=(m[k]||0)+1});
+  const max=Math.max(1,...Object.values(m));
+  const ent=Object.entries(m).sort((a,b)=>b[1]-a[1]);
+  if(!ent.length){box.append(el('div','num','هنوز داده‌ای نیست'));return}
+  ent.forEach(([k,n])=>{const d=el('div','bar');const i=el('i');const u=el('u');u.style.width=(n/max*100)+'%';i.append(u);d.append(el('span',null,k),el('em',null,nf.format(n)),i);box.append(d)});
+ }
+
+ function render(){
+  renderStats();
+  renderMix('mix-pkg','package_choice',pkgShort);
+  renderMix('mix-grp','product_group');
+  const list=filtered(),tb=$('rows');tb.replaceChildren();
+  list.forEach(r=>{
+   const tr=el('tr');tr.tabIndex=0;
+   const td=(t,l,cls)=>{const d=el('td',cls||null);if(l)d.dataset.l=l;if(t instanceof Node)d.append(t);else d.textContent=t;tr.append(d);return d};
+   td(nf.format(r.id),null,'num hide-m');
+   td(fmt(r.created_at),null,'num');
+   const b=el('b',null,r.brand);td(b,null);
+   td(r.contact_name,'مسئول');
+   const ph=el('span','ltr',r.phone);td(ph,'تماس');
+   td(r.product_group,null,'hide-m');
+   td(pkgShort(r.package_choice),'پکیج');
+   td(el('span','pill '+r.status,ST[r.status]||r.status),null);
+   tr.onclick=()=>openRow(r);tr.onkeydown=e=>{if(e.key==='Enter')openRow(r)};
+   tb.append(tr);
+  });
+  const e=$('empty');
+  if(!list.length&&all.length){e.hidden=false;e.textContent='موردی با این فیلتر پیدا نشد.'}
+  else if(!all.length&&e.textContent.indexOf('دریافت')!==0){e.hidden=false;e.textContent='هنوز ثبت‌نامی انجام نشده است. هر فرمی که از سایت ارسال شود همین‌جا نمایش داده می‌شود.'}
+  else if(list.length)e.hidden=true;
+ }
+
+ function openRow(r){
+  cur=r;delArmed=false;$('d-del').textContent='حذف';$('d-msg').textContent='';
+  $('d-title').textContent=r.brand;$('d-time').textContent='ثبت‌شده: '+fmt(r.created_at);
+  const dl=$('d-fields');dl.replaceChildren();
+  [['نام مسئول',r.contact_name],['شماره تماس',r.phone,1],['گروه محصول',r.product_group],['پکیج',r.package_choice],
+   ['همکاری قبلی',r.prev_collab],['حمایت از جوایز',r.prize_support],['نشانی برند',r.brand_url,1],['توضیحات',r.message]]
+   .forEach(([k,v,ltr])=>{if(!v)return;const dd=el('dd');if(ltr)dd.append(el('span','ltr',v));else dd.textContent=v;dl.append(el('dt',null,k),dd)});
+  $('d-status').value=r.status;$('d-note').value=r.admin_note||'';
+  const digits=String(r.phone).replace(/[^\d+]/g,'');
+  const intl=digits.startsWith('0')?'98'+digits.slice(1):digits.replace('+','');
+  $('d-wa').href='https://wa.me/'+intl;$('d-tel').href='tel:'+digits;
+  $('dlg').showModal();
+ }
+
+ $('d-save').onclick=async()=>{
+  if(!cur)return;
+  const body={id:cur.id,status:$('d-status').value,admin_note:$('d-note').value};
+  $('d-msg').textContent='در حال ذخیره…';
+  try{
+   const r=await fetch('/api/admin/registrations',{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+   if(!r.ok)throw 0;
+   cur.status=body.status;cur.admin_note=body.admin_note;$('dlg').close();render();toast('ذخیره شد');
+  }catch{$('d-msg').textContent='ذخیره انجام نشد. دوباره تلاش کنید.'}
+ };
+ $('d-del').onclick=async()=>{
+  if(!cur)return;
+  if(!delArmed){delArmed=true;$('d-del').textContent='برای حذف دوباره بزنید';return}
+  try{
+   const r=await fetch('/api/admin/registrations?id='+cur.id,{method:'DELETE'});
+   if(!r.ok)throw 0;
+   all=all.filter(x=>x.id!==cur.id);$('dlg').close();buildFilters();render();toast('حذف شد');
+  }catch{$('d-msg').textContent='حذف انجام نشد.'}
+ };
+ $('d-close').onclick=()=>$('dlg').close();
+ $('dlg').addEventListener('click',e=>{if(e.target===$('dlg'))$('dlg').close()});
+ ['q','f-pkg','f-grp'].forEach(i=>$(i).addEventListener('input',render));
+ $('refresh').onclick=async()=>{await load();toast('بروزرسانی شد')};
+ load();
+})();
+</script>
+</body>
+</html>
